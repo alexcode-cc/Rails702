@@ -11,6 +11,11 @@ class PagesController < ApplicationController
     @host = Socket.gethostname
     @ip = Socket.ip_address_list.find { |ip| ip.ipv4? && !ip.ipv4_loopback? }.ip_address
     @remote_ip = request.remote_ip
-    @time = Time.current.to_s(:long)
+    @time = Time.current.to_fs(:long)
+
+    flash[:alert] = 'Hello Alert!'
+    flash[:info] = 'Hello Info!'
+    flash[:warning] = 'Hello Warning!'
+    flash[:success] = 'Hello Success!'
   end
 end
